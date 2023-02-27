@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>Tarea 3</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/estilo1.css}" />
+
+</head>
+
+<body>
+    <header th:replace="layout/plantilla :: header" />
+    <h1>Listado de Paises</h1>
+    <a th:href="@{/pais/nuevo}">Nuevo Pais</a>
+    <div th:if="${pais != null and !pais.empty}">
+        <table border="0">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Capital</th>
+                    <th>Poblacion</th>
+                    <th>Costas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pais : ${pais}">
+                    <td>[[${pais.nombre}]]</td>
+                    <td>[[${pais.capital}]]</td>
+                    <td>[[${pais.poblacion}]]</td>
+                    <td>[[${pais.costas}]]</td>
+                    <td><a th:href="@{pais/eliminar/} + ${pais.idPais}">Eliminar</a></td>
+                    <td><a th:href="@{pais/modificar/} + ${pais.idPais}">Modificar</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <footer th:replace="layout/plantilla :: footer" />
+    <div th:if="${pais == null or pais.empty}">
+        <h2>No hay paises que mostrar...</h2>
+    </div>
+
+</body>
+
+</html>

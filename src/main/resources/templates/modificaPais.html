@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>Tarea 3</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Datos de pais</h1>
+        <a th:href="@{/}">Regresar</a>
+        <hr>
+        <form th:action="@{/pais/guardar}" method="post" th:object="${pais}">
+            
+            <input type="hidden" name="idPais" th:field="*{idPais}"
+            
+            <label>Nombre</label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <label>Capital</label>
+            <input type="text" name="capital" th:field="*{capital}"/>
+            <label>Poblacion</label>
+            <input type="number" name="poblacion" th:field="*{poblacion}"/>
+            <label>Costas</label>
+            <input type="text" name="costas" th:field="*{costas}"/>
+            <br>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+
+        
+    </body>
+</html>
